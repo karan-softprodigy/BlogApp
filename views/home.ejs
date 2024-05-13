@@ -9,7 +9,24 @@
   </head>
   <body>
     <%- include('./partials/nav') %>
-    <h1>Hello world</h1>
+    <div class="container mt-5">
+      <div class="d-flex">
+        <% blogs.map((blog) => { %>
+        <div class="card mb-3 mx-4" style="width: 18rem">
+          <img
+            class="card-img-top"
+            src="<%=blog.bannerImage%>"
+            alt="Card cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= blog.title %></h5>
+            <p class="card-text"><%= blog.description %></p>
+            <a href="/blog/<%=blog._id%>" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
 
     <%- include('./partials/scripts') %>
   </body>

@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const userModel = require("../models/users");
+const jwt = require("jsonwebtoken");
 
 const signup = async (req, res) => {
   const { username, email, password } = req.body;
@@ -33,6 +34,20 @@ const signin = async (req, res) => {
     return res.redirect("/signin");
   }
 
-  res.redirect("/");
+  const jwtPayload = {
+    email: user.email,
+    username: user.username,
+    role: user.role,
+    profileImage: user.profileImageURL,
+    id: user._id,
+  };
+  const token = jwt.sign(jwtPayload, process.env.JWT_SECRET_KEY);
+  res.locals.user = jwtPayload;
+  res.cookie("token", token).redirect("/");
 };
-module.exports = { signup, signin };
+
+const logout = (req, res) => {
+  res.clearCookie("token");
+  res.redirect("/signin");
+};
+module.exports = { signup, signin, logout };

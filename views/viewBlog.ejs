@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('./partials/links') %>
+    <title>View Blog</title>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+    <div class="container mt-3">
+      <img
+        class=""
+        src="/<%=blog.bannerImage%>"
+        alt="Cardcap"
+        style="width: 18rem"
+      />
+      <h1><%= blog.title %></h1>
+      <p><%= blog.description %></p>
+    </div>
+    <%- include('./partials/scripts') %>
+  </body>
+</html>
