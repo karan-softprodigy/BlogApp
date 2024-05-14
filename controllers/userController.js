@@ -43,11 +43,11 @@ const signin = async (req, res) => {
   };
   const token = jwt.sign(jwtPayload, process.env.JWT_SECRET_KEY);
   res.locals.user = jwtPayload;
-  res.cookie("token", token).redirect("/");
+  res.cookie("token", token).redirect("back");
 };
 
-const logout = (req, res) => {
+const logout = (req, res, next) => {
   res.clearCookie("token");
-  res.redirect("/signin");
+  res.redirect("back");
 };
 module.exports = { signup, signin, logout };

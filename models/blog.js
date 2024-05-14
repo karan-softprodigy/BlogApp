@@ -13,11 +13,10 @@ const blogModel = mongoose.Schema(
     bannerImage: {
       type: String,
       required: false,
-      default: "images/bannerImg.jpeg",
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Blogusers",
+      ref: "blogusers",
     },
   },
   { timestamps: true }

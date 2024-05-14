@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const PORT = 5000;
+const PORT = process.env.PORT || 4000;
 require("dotenv").config();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -11,7 +11,7 @@ const cookieParser = require("cookie-parser");
 const userRouter = require("./routes/user");
 const blogRouter = require("./routes/blog");
 
-const { authentication, isUserLoggedIn } = require("./middlewares/auth");
+const { isUserLoggedIn } = require("./middlewares/auth");
 const blogModel = require("./models/blog");
 
 // connecting to DB and then starting the server
@@ -43,7 +43,7 @@ app.use(flash());
 app.use("/", userRouter);
 app.use("/", blogRouter);
 
-app.get("/", authentication, async (req, res) => {
+app.get("/", async (req, res) => {
   const user = isUserLoggedIn(req, res);
   const allBlogs = await blogModel.find();
   res.render("home", { user: user, blogs: allBlogs });

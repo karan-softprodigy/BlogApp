@@ -30,4 +30,4 @@ const userSchema = mongoose.Schema(
 );
 
 module.exports =
-  mongoose.models.Blogusers || mongoose.model("Blogusers", userSchema);
+  mongoose.models.blogusers || mongoose.model("blogusers", userSchema);

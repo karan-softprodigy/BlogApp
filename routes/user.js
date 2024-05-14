@@ -9,7 +9,7 @@ userRouter.get("/signin", (req, res) => {
   if (Object.keys(userData).length) {
     return res.redirect("/");
   } else {
-    res.render("signin", { error: req.flash("error") });
+    res.render("signin", { user: userData, error: req.flash("error") });
   }
 });
 
@@ -18,7 +18,7 @@ userRouter.get("/signup", (req, res) => {
   if (Object.keys(userData).length) {
     return res.redirect("/");
   } else {
-    res.render("signup");
+    res.render("signup", { user: userData });
   }
 });
 

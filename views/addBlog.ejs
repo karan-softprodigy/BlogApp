@@ -17,7 +17,7 @@
       <div class="alert alert-danger" role="alert"><%=error %></div>
       <%} %>
 
-      <form action="/add-blog" method="post">
+      <form action="/add-blog" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label class="form-label" for="title">Title</label>
           <input
@@ -27,6 +27,7 @@
             id="title"
             aria-describedby="title"
             placeholder="Title"
+            required
           />
         </div>
 
@@ -38,6 +39,7 @@
             id="description"
             rows="4"
             placeholder="Description"
+            required
           ></textarea>
         </div>
 
@@ -50,7 +52,7 @@
             id="coverImage"
             aria-describedby="coverImage"
             placeholder="coverImage"
-            disabled
+            required
           />
         </div>
 

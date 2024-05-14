@@ -8,7 +8,8 @@
     <title>Signup</title>
   </head>
   <body>
-    <div class="container mt-3">
+    <%- include('./partials/nav')%>
+    <div class="container mt-5">
       <h1 class="text-center">Sign Up</h1>
       <form action="/signup" method="post">
         <div class="mb-3">
@@ -19,6 +20,7 @@
             id="username"
             aria-describedby="username"
             name="username"
+            required
           />
         </div>
         <div class="mb-3">
@@ -29,6 +31,7 @@
             id="email"
             aria-describedby="email"
             name="email"
+            required
           />
         </div>
         <div class="mb-3">
@@ -38,10 +41,16 @@
             class="form-control"
             id="password"
             name="password"
+            required
           />
         </div>
         <button type="submit" class="btn btn-primary">Sign up</button>
       </form>
+
+      <div class="mt-5 text-center">
+        <p>Have an account? <a href="/signin">SignIn</a></p>
+      </div>
+    </div>
     </div>
     <%- include('./partials/scripts')%>
   </body>

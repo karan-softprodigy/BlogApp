@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%- include('./partials/links')%>
-    <title>Signup</title>
+    <title>Sign in</title>
   </head>
   <body>
-    <div class="container mt-3">
+    <%- include('./partials/nav')%>
+    <div class="container mt-5">
       <h1 class="text-center">Login</h1>
       <% if(error.length){ %>
       <div class="alert alert-danger" role="alert"><%=error %></div>
@@ -23,6 +24,7 @@
             id="email"
             aria-describedby="email"
             name="email"
+            required
           />
         </div>
         <div class="mb-3">
@@ -32,10 +34,15 @@
             class="form-control"
             id="password"
             name="password"
+            required
           />
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
       </form>
+
+      <div class="mt-5 text-center">
+        <p>Don't have an account? <a href="/signup">Register</a></p>
+      </div>
     </div>
     <%- include('./partials/scripts')%>
   </body>
