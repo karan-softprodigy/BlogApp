@@ -18,7 +18,6 @@ const addBlog = async (req, res, next) => {
   const { title, description, coverImage } = req.body;
   const user = isUserLoggedIn(req, res);
 
-  console.log(req.file);
   try {
     await blogModel.create({
       title,

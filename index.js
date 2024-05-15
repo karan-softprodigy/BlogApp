@@ -45,6 +45,6 @@ app.use("/", blogRouter);
 
 app.get("/", async (req, res) => {
   const user = isUserLoggedIn(req, res);
-  const allBlogs = await blogModel.find();
+  const allBlogs = await blogModel.find().sort({ createdAt: "desc" });
   res.render("home", { user: user, blogs: allBlogs });
 });

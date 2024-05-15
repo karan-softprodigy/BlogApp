@@ -7,20 +7,20 @@
     <%- include('./partials/links') %>
     <title>View Blog</title>
   </head>
-  <body>
+  <body style="background-color: #e4e2e6">
     <%- include('./partials/nav') %>
-    <div class="container mt-3">
+    <div class="container mt-5 mb-5">
       <img
-        class=""
+        class="w-100"
         src="<%=blog.bannerImage%>"
         alt="Cardcap"
-        style="width: 18rem"
+        style="max-height: 450px"
       />
-      <h1><%= blog.title %></h1>
-      <p><%= blog.description %></p>
+      <h1 class="mt-5"><%= blog.title %></h1>
+      <p class="mt-3" style="line-height: 28px"><%= blog.description %></p>
 
       <!-- Author section -->
-      <div class="mt-4 d-flex align-items-center" style="font-size: small">
+      <div class="mt-4 d-flex align-items-center" style="font-size: medium">
         <div>
           <img
             alt="profilIimg"
@@ -65,9 +65,12 @@
                 id="comment"
                 rows="4"
                 placeholder="Add Comment"
+                required
               ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            <button type="submit" class="btn btn-primary mt-4 w-100">
+              Submit
+            </button>
           </form>
           <% } else { %>
           <p><a href="/signin"> Sign in to add comment</a></p>
