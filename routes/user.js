@@ -1,7 +1,11 @@
 const express = require("express");
 const userRouter = express.Router();
-const { signup, signin, logout } = require("../controllers/userController");
-const jwt = require("jsonwebtoken");
+const {
+  signup,
+  signin,
+  logout,
+  verifyEmail,
+} = require("../controllers/userController");
 const { isUserLoggedIn } = require("../middlewares/auth");
 
 userRouter.get("/signin", (req, res) => {
@@ -18,11 +22,16 @@ userRouter.get("/signup", (req, res) => {
   if (Object.keys(userData).length) {
     return res.redirect("/");
   } else {
-    res.render("signup", { user: userData });
+    res.render("signup", {
+      user: userData,
+      registrationSuccess: req.flash("registrationSuccess"),
+      error: req.flash("error"),
+    });
   }
 });
 
 userRouter.post("/signup", signup);
+userRouter.get("/verifyEmail", verifyEmail);
 userRouter.post("/signin", signin);
 userRouter.get("/logout", logout);
 
